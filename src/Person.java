@@ -13,7 +13,7 @@ class Person {
     }
 
     Person(String paramName){
-        name = paramName;
+        this(paramName, null);
     }
 
     Person(){
