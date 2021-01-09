@@ -14,10 +14,11 @@ public class PersonApp {
 
         person1.sayHello("Budi");
 
-        Person person2 = new Person("Kafka", "Jakarta");
+        Person person2 = new Person("Kafka");
 
         Person person3;
-        person3 = new Person("Udin", "Bandung");
+        person3 = new Person();
+        person3.name = "Udin";
 
         person3.sayHello("Budi");
 
