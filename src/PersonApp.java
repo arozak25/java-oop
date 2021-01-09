@@ -10,12 +10,20 @@ public class PersonApp {
         person1.name = "Rozak";
         person1.address = "Bogor";
 //        person1.country = "Amerika" //ERROR
-        Person person2 = new Person();
-        Person person3;
-        person3 = new Person();
 
         System.out.println(person1.name);
         System.out.println(person1.address);
         System.out.println(person1.country);
+
+        person1.sayHello("Budi");
+
+        Person person2 = new Person();
+
+        Person person3;
+        person3 = new Person();
+        person3.name = "Udin";
+
+        person3.sayHello("Budi");
+
     }
 }
