@@ -24,5 +24,9 @@ public class ValidationApp {
         } finally {
             System.out.println("Data berhasil di cek");
         }
+
+        LoginRequest loginRequest2 = new LoginRequest(null, null);
+        ValidationUtil.validateRuntime(loginRequest2);
+        System.out.println("sukses");
     }
 }
