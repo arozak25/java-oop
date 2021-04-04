@@ -1,8 +1,11 @@
 package belajar.ojak.util;
 
+import belajar.ojak.annotation.NotBlank;
 import belajar.ojak.data.LoginRequest;
 import belajar.ojak.error.BlankException;
 import belajar.ojak.error.ValidationException;
+
+import java.lang.reflect.Field;
 
 /**
  * @author Abdul Rozak
@@ -30,5 +33,25 @@ public class ValidationUtil {
             throw new NullPointerException("Password tidak boleh null");
         else if (loginRequest.password().isBlank())
             throw new BlankException("Password tidak boleh blank");
+    }
+
+    public static void validationReflection(Object object){
+        Class aClass = object.getClass();
+        Field[] fields = aClass.getDeclaredFields();
+
+        for (var field: fields){
+            field.setAccessible(true);
+
+            if (field.getAnnotation(NotBlank.class) != null) {
+                try {
+                    String value = (String) field.get(object);
+
+                    if (value == null || value.isBlank())
+                        throw new BlankException(field + " tidak boleh blank");
+                } catch (IllegalAccessException ex) {
+                    System.out.println("gagal mengakses field " + field);
+                }
+            }
+        }
     }
 }
